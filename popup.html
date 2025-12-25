@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapid Indexer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span class="rocket">🚀</span> Rapid Indexer
+      </div>
+      <div class="user-info" id="userInfo">
+        <span id="userEmail">Connecting...</span> <span class="separator">|</span> Credits: <span id="creditBalance">...</span>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="indexer">Indexer</button>
+      <button class="tab-btn" data-tab="traffic">Traffic</button>
+      <button class="tab-btn" data-tab="settings">Settings</button>
+    </div>
+
+    <main>
+      <!-- Indexer Tab -->
+      <div id="indexer" class="tab-content active">
+        <div class="input-group">
+          <button id="addCurrentPage" class="secondary-btn">Add Current Page</button>
+        </div>
+        <div class="input-group">
+          <textarea id="urlsInput" placeholder="Enter URLs (one per line)..." rows="6"></textarea>
+        </div>
+        
+        <div class="options-grid">
+          <label class="checkbox-label">
+            <input type="checkbox" id="vipQueue"> 
+            <span>VIP Queue (Fast) - Instant Indexing</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="dripFeed">
+            <span>Drip Feed</span>
+          </label>
+        </div>
+
+        <div id="dripOptions" class="hidden input-group">
+          <label for="dripDays">Duration (Days)</label>
+          <input type="number" id="dripDays" value="3" min="1" max="30">
+        </div>
+
+        <div class="input-group">
+          <label for="engineSelect">Engine</label>
+          <select id="engineSelect">
+            <option value="google">Google</option>
+            <option value="yandex">Yandex</option>
+          </select>
+        </div>
+
+        <div class="cost-display">Estimated Cost: <span id="indexerCost">0</span> Credits</div>
+        <button id="submitIndexer" class="primary-btn">Submit to Indexer</button>
+      </div>
+
+      <!-- Traffic Tab -->
+      <div id="traffic" class="tab-content">
+        <div class="input-group">
+          <label for="trafficUrl">Target URL</label>
+          <input type="url" id="trafficUrl" placeholder="https://example.com">
+        </div>
+        
+        <div class="row">
+          <div class="input-group">
+            <label for="trafficQty">Visitors</label>
+            <input type="number" id="trafficQty" value="1000" step="100" min="100">
+          </div>
+          <div class="input-group">
+            <label for="trafficMode">Mode</label>
+            <select id="trafficMode">
+              <option value="single">Single (Quick)</option>
+              <option value="campaign">Campaign</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="trafficDaysGroup" class="input-group hidden">
+          <label for="trafficDays">Duration (Days)</label>
+          <input type="number" id="trafficDays" value="1" min="1" max="30">
+        </div>
+
+        <div class="row">
+          <div class="input-group">
+            <label for="trafficCountry">Country</label>
+            <select id="trafficCountry">
+              <option value="WW">Worldwide (WW)</option>
+              <option value="US">United States (US)</option>
+              <option value="GB">United Kingdom (GB)</option>
+              <option value="CA">Canada (CA)</option>
+              <option value="DE">Germany (DE)</option>
+              <option value="FR">France (FR)</option>
+              <!-- Add more as needed -->
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="trafficDevice">Device</label>
+            <select id="trafficDevice">
+              <option value="5">Mixed</option>
+              <option value="1">Desktop</option>
+              <option value="2">Mobile (Android)</option>
+              <option value="3">Mobile (iOS)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="trafficType">Traffic Source</label>
+          <select id="trafficType">
+            <option value="2">Social / Custom Referrer</option>
+            <option value="1">Google Keyword</option>
+            <option value="3">Direct / Blank</option>
+          </select>
+        </div>
+
+        <div id="referrerGroup" class="input-group">
+          <label for="referringUrl">Referring URL</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="url" id="referringUrl" placeholder="https://twitter.com/..." value="https://twitter.com/">
+            <button id="addCurrentPageToReferrer" class="secondary-btn" style="width: auto; white-space: nowrap;">Current Page</button>
+          </div>
+        </div>
+
+        <div id="keywordGroup" class="input-group hidden">
+          <label for="googleKeyword">Google Keyword</label>
+          <input type="text" id="googleKeyword" placeholder="keyword">
+        </div>
+
+        <div class="cost-display">Estimated Cost: <span id="trafficCost">0</span> Credits</div>
+        <button id="submitTraffic" class="primary-btn">Launch Traffic Blast</button>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="settings" class="tab-content">
+        <div class="input-group">
+          <label for="apiKey">API Key</label>
+          <input type="password" id="apiKey" placeholder="Enter your Rapid Indexer API Key">
+          <p class="help-text">Get your key from <a href="https://rapid-indexer.com/" target="_blank">rapid-indexer.com</a></p>
+        </div>
+        <button id="saveSettings" class="primary-btn">Save Settings</button>
+        <button id="checkBalance" class="secondary-btn">Check Connection</button>
+      </div>
+    </main>
+
+    <footer>
+      <div id="statusMessage" class="status"></div>
+      <button id="buyCreditsFooter" class="footer-btn">💰 Buy Credits / Web Dashboard</button>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
+
