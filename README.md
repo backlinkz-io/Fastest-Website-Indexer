@@ -6,6 +6,8 @@ In the high-stakes world of SEO, **indexing speed** is the critical bottleneck. 
 
 This repository contains the official Chrome Extension for Rapid Indexer, allowing SEO professionals to leverage our indexing technology directly from their browser.
 
+[**Download from Chrome Web Store**](https://chromewebstore.google.com/detail/rapid-indexer-seo-indexin/mckjdgeeinnbnhlmfinkeklpgffnjnpg)
+
 ## The Problem: Why Google Ignores Your Links
 
 Google's indexing infrastructure is under immense strain. With millions of new pages published daily, the "Googlebot" cannot crawl everything. It relies on algorithmic heuristics to decide *what* to crawl and *when*.
@@ -56,6 +58,13 @@ Don't just index; rank. Use our extension to launch traffic campaigns that drive
 The [Rapid Indexer Chrome Extension](https://rapid-indexer.com/chrome-extension) brings this power directly to your browser. No more logging into dashboards or copy-pasting links.
 
 ## Installation
+
+### Option 1: Chrome Web Store (Recommended)
+The easiest way to install Rapid Indexer is directly from the official store:
+[**Install Rapid Indexer from Chrome Web Store**](https://chromewebstore.google.com/detail/rapid-indexer-seo-indexin/mckjdgeeinnbnhlmfinkeklpgffnjnpg)
+
+### Option 2: Developer Mode (Manual Installation)
+If you prefer to load the extension from source:
 
 1.  Clone this repository:
     ```bash
