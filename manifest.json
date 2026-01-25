@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Rapid Indexer - SEO Indexing Service",
-  "version": "1.0.0",
+  "name": "Rapid Indexer - Link Indexing Service",
+  "version": "1.0.1",
   "description": "Submit URLs to Rapid Indexer directly from Chrome. Index pages, check status, and drive viral traffic.",
   "permissions": [
     "storage",

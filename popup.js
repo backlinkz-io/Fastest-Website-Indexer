@@ -34,8 +34,14 @@ const elements = {
   googleKeyword: document.getElementById('googleKeyword'),
   referrerGroup: document.getElementById('referrerGroup'),
   keywordGroup: document.getElementById('keywordGroup'),
+  
+  // AI Traffic
+  aiEnabled: document.getElementById('aiEnabled'),
+  clickLinks: document.getElementById('clickLinks'),
+  aiOptions: document.getElementById('aiOptions'),
+
   submitTrafficBtn: document.getElementById('submitTraffic'),
-  trafficCost: document.getElementById('trafficCost'),
+  // trafficCost: document.getElementById('trafficCost'), // Removed
 
   // Settings
   apiKeyInput: document.getElementById('apiKey'),
@@ -106,9 +112,14 @@ function setupEventListeners() {
   });
   elements.submitTrafficBtn.addEventListener('click', submitTrafficTask);
   elements.addCurrentPageToReferrerBtn.addEventListener('click', addCurrentPageToReferrer);
+  
+  // AI Options Toggle
+  elements.aiEnabled.addEventListener('change', (e) => {
+    elements.aiOptions.classList.toggle('hidden', !e.target.checked);
+  });
 
   // Cost Updates - Traffic
-  elements.trafficQty.addEventListener('input', updateCost);
+  // elements.trafficQty.addEventListener('input', updateCost); // Removed traffic cost calculation
 
   // Footer
   elements.buyCreditsFooter.addEventListener('click', () => {
@@ -146,10 +157,12 @@ function updateCost() {
   }
   elements.indexerCost.textContent = indexerCost;
 
-  // Traffic Cost
+  // Traffic Cost - Removed per instructions
+  /*
   const visitors = parseInt(elements.trafficQty.value, 10) || 0;
   const trafficCost = Math.ceil((visitors / 1000) * COSTS.TRAFFIC_PER_1000);
   elements.trafficCost.textContent = trafficCost;
+  */
 }
 
 // --- API Interaction ---
@@ -314,11 +327,23 @@ async function submitTrafficTask() {
     type: 'traffic',
     link: link,
     quantity: parseInt(elements.trafficQty.value, 10),
-    mode: elements.trafficMode.value,
     country: elements.trafficCountry.value,
-    device: parseInt(elements.trafficDevice.value, 10),
-    type_of_traffic: parseInt(elements.trafficType.value, 10)
+    device: elements.trafficDevice.value,
+    ai_enabled: elements.aiEnabled.checked
   };
+
+  // Handle AI Click Links
+  if (elements.aiEnabled.checked) {
+    const clickLinksText = elements.clickLinks.value.trim();
+    if (clickLinksText) {
+      // Split by newline and join with comma for the API
+      const links = clickLinksText.split('\n').map(l => l.trim()).filter(l => l);
+      if (links.length > 0) {
+        payload.click_links = links.join(', ');
+        payload.click_chance = 30; // Default click chance
+      }
+    }
+  }
 
   const trafficType = elements.trafficType.value;
   if (trafficType === '1') {
@@ -334,7 +359,7 @@ async function submitTrafficTask() {
       showMessage('Referring URL required', 'error');
       return;
     }
-    payload.referring_url = ref;
+    payload.referrer = ref;
   }
 
   if (elements.trafficMode.value === 'campaign') {

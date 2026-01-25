@@ -97,18 +97,30 @@
               <option value="CA">Canada (CA)</option>
               <option value="DE">Germany (DE)</option>
               <option value="FR">France (FR)</option>
-              <!-- Add more as needed -->
             </select>
           </div>
           <div class="input-group">
             <label for="trafficDevice">Device</label>
             <select id="trafficDevice">
-              <option value="5">Mixed</option>
-              <option value="1">Desktop</option>
-              <option value="2">Mobile (Android)</option>
-              <option value="3">Mobile (iOS)</option>
+              <option value="mixed">Mixed</option>
+              <option value="desktop">Desktop</option>
+              <option value="mobile">Mobile</option>
+              <option value="tablet">Tablet</option>
             </select>
           </div>
+        </div>
+
+        <div class="input-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="aiEnabled" checked>
+            <span>AI-Powered Visitors (Human Behavior)</span>
+          </label>
+        </div>
+
+        <div id="aiOptions" class="input-group">
+          <label for="clickLinks">Click Targets (Optional)</label>
+          <p class="help-text">Describe what you want visitors to click (e.g., "Pricing button", "Sign Up link", "Contact page")</p>
+          <textarea id="clickLinks" placeholder="Enter one target per line..." rows="3"></textarea>
         </div>
 
         <div class="input-group">
@@ -133,8 +145,8 @@
           <input type="text" id="googleKeyword" placeholder="keyword">
         </div>
 
-        <div class="cost-display">Estimated Cost: <span id="trafficCost">0</span> Credits</div>
-        <button id="submitTraffic" class="primary-btn">Launch Traffic Blast</button>
+        <div class="cost-display"><a href="https://rapid-indexer.com/viral-blast" target="_blank" style="color: #6c5ce7; text-decoration: none;">View Pricing on Website</a></div>
+        <button id="submitTraffic" class="primary-btn">Launch AI Traffic Blast</button>
       </div>
 
       <!-- Settings Tab -->
